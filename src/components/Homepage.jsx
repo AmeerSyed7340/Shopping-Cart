@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import ShoppingCart from "./ShoppingCart";
+import { useLocation } from "react-router-dom";
 import '../styles/Homepage.css';
 import { Outlet, Link } from "react-router-dom";
 
 const Homepage = () => {
+    const location = useLocation();
     const [object, setObj] = useState([]);
 
     //useEffect hook to fetch during mount
@@ -18,6 +19,10 @@ const Homepage = () => {
         })
     }, []);
 
+    function handleButton(){
+        const data = location.onItemAddToCart;
+        data();
+    }
 
     return (
         <div className="container">
@@ -30,7 +35,7 @@ const Homepage = () => {
                     <p>{item.description}</p>
                     <p>Price: {item.price}</p>
                     <p>Rating: {item.rating.rate}</p>
-                    <button>Add to cart</button>
+                    <button onClick={handleButton}>Add to cart</button>
                 </div>
             ))}
         </div>
