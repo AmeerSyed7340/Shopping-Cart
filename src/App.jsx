@@ -1,11 +1,12 @@
-import './App.css';
 import Homepage from './components/Homepage'
+import {Link} from "react-router-dom";
 
 function App() {
 
   return (
     <div>
-      <Homepage />
+      <h1>Hello from the main page: </h1>
+      <Link to="homepage">Homepage</Link>
     </div>
   )
 }
