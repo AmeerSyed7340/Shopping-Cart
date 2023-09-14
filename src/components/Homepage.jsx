@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import '../styles/Homepage.css';
 import { Outlet, Link } from "react-router-dom";
+import CartContext from "../CartContext";
 
 const Homepage = () => {
-    const location = useLocation();
     const [object, setObj] = useState([]);
+    const {onItemAddToCart} = useContext(CartContext);
 
     //useEffect hook to fetch during mount
     useEffect(() => {
@@ -19,9 +19,8 @@ const Homepage = () => {
         })
     }, []);
 
-    function handleButton(){
-        const data = location.onItemAddToCart;
-        data();
+    function handleButton(item){
+        onItemAddToCart(item);
     }
 
     return (
@@ -35,7 +34,7 @@ const Homepage = () => {
                     <p>{item.description}</p>
                     <p>Price: {item.price}</p>
                     <p>Rating: {item.rating.rate}</p>
-                    <button onClick={handleButton}>Add to cart</button>
+                    <button onClick={() => handleButton(item)}>Add to cart</button>
                 </div>
             ))}
         </div>
