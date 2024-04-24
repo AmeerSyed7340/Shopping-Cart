@@ -1,32 +1,24 @@
-import { useEffect, useState } from 'react';
-import Homepage from './components/Homepage'
-import ShoppingCart from './components/ShoppingCart';
-import CartContext from './CartContext';
-import { Link, Routes, Route } from "react-router-dom";
+import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
-function App() {
-  const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
-  function handleAddToCart(item) {
-    setCartItems(prevItems => [...prevItems, item]);
-  }
+const theme = createTheme({
+  typography: {
+    fontFamily: "Roboto",
+  },
+});
 
+const App = () => {
   return (
-    <CartContext.Provider value = {{onItemAddToCart:handleAddToCart}}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div>
-        <h1>Hello from the main page: </h1>
-        <Link to="homepage">Homepage</Link>
-
-        <Routes>
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/homepage/shoppingcart" element={<ShoppingCart />} />
-        </Routes>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi non
+        quas iure error debitis repellendus voluptatibus, minima iste cumque
+        pariatur voluptate quae porro dolorum eveniet itaque velit praesentium
+        aut explicabo.
       </div>
-    </CartContext.Provider>
-  )
-}
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
