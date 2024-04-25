@@ -45,7 +45,7 @@ export const Products = () => {
           key={product.id}
           sx={{ minWidth: 275, maxWidth: 275, margin: 2 }}
         >
-          <CardHeader title={product.title} subheader={product.category} />
+          <CardHeader title={product.title} subheader={product.category} sx={{height: 150}}/>
           <CardMedia
             component="img"
             height="194"
@@ -56,7 +56,7 @@ export const Products = () => {
           <CardActions sx={{ display: "flex", justifyContent: "center" }}>
             <Button variant="contained" color="success" sx={{ width: "100%" }}>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                ADD TO BAG - {product.price}
+                ADD - ${product.price}
               </Typography>
             </Button>
             <ExpandMore
