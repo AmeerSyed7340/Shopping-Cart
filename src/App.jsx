@@ -1,5 +1,6 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-
+import Appbar from "./components/AppBar";
+import VideoComp from "./components/VideoComp";
 
 const theme = createTheme({
   typography: {
@@ -11,12 +12,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi non
-        quas iure error debitis repellendus voluptatibus, minima iste cumque
-        pariatur voluptate quae porro dolorum eveniet itaque velit praesentium
-        aut explicabo.
-      </div>
+      <Appbar />
+      <VideoComp />
     </ThemeProvider>
   );
 };
