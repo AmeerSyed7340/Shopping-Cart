@@ -1,13 +1,5 @@
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Toolbar,
-  Typography,
-  Button,
-  Stack,
-} from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { AppBar, Box, Toolbar, Typography, Stack } from "@mui/material";
+
 import { useState } from "react";
 const Appbar = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -41,7 +33,9 @@ const Appbar = () => {
               alignItems: "center",
             }}
           >
-            <Typography variant="h3" sx={{fontWeight:"bold"}}>FAKE STORE</Typography>
+            <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+              FAKE STORE
+            </Typography>
             {isHovered && (
               <>
                 <Stack direction="row" spacing={4}>
