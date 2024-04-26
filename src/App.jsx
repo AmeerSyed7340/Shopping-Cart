@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import Appbar from "./components/AppBar";
-import VideoComp from "./components/VideoComp";
 
+import { Outlet } from "react-router-dom";
 const theme = createTheme({
   typography: {
     fontFamily: "Roboto",
@@ -13,7 +13,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Appbar />
-      <VideoComp />
+      {/* <VideoComp /> */}
+      <Outlet />
     </ThemeProvider>
   );
 };

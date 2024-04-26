@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 //import Router from './components/Router'
 import App from "./App";
+import VideoComp from "./components/VideoComp";
 import { Products } from "./components/Products";
 import "./index.css";
 import "@fontsource/roboto/300.css";
@@ -14,10 +15,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/products",
-    element: <Products />,
+    children: [
+      {
+        path: "/",
+        element: <VideoComp />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
+      },
+    ],
   },
 ]);
 
