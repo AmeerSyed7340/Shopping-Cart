@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import Appbar from "./components/AppBar";
-
+import CartComp from "./components/CartComp";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 const theme = createTheme({
   typography: {
@@ -9,12 +10,17 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Appbar />
+      <CssBaseline />      
+      <Appbar setIsOpen={setIsOpen}/>
       {/* <VideoComp /> */}
-      <Outlet />
+
+      <Outlet isOpen={isOpen}/>
+      {isOpen && <CartComp isOpen={isOpen} />}
     </ThemeProvider>
   );
 };

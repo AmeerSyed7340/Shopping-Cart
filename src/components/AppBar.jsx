@@ -7,14 +7,14 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-
-const Appbar = () => {
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+const Appbar = ({setIsOpen}) => {
   const location = useLocation();
   console.log(location.pathname);
   const [isHovered, setIsHovered] = useState(false);
+
   const isProductPage = location.pathname === "/products";
 
   return (
@@ -43,8 +43,10 @@ const Appbar = () => {
           }}
         >
           {isProductPage && (
-            <IconButton color="inherit">
-              <HomeOutlinedIcon />
+            <IconButton>
+              <Link to="/">
+                <HomeOutlinedIcon sx={{ color: "white" }} />
+              </Link>
             </IconButton>
           )}
           {/* Left side - Logo and Navigation Links */}
@@ -59,8 +61,6 @@ const Appbar = () => {
               variant="h3"
               sx={{
                 fontWeight: "bold",
-                alignSelf: "center",
-                "margin-right": "100px",
               }}
             >
               FAKE STORE
@@ -112,8 +112,8 @@ const Appbar = () => {
           </Stack>
           {/* Right side - Cart (conditionally displayed) */}
           {isProductPage && (
-            <IconButton color="inherit">
-              <ShoppingCartOutlinedIcon />
+            <IconButton color="inherit" onClick={()=> setIsOpen(true)}>
+              <ShoppingBagOutlinedIcon />
             </IconButton>
           )}
         </Toolbar>
