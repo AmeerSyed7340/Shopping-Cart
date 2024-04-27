@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Icon, Slide, Stack } from "@mui/material";
+import { Slide, Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -50,6 +50,7 @@ const CartComp = ({ isOpen, setIsOpen }) => {
           marginLeft: "auto",
           marginBottom: "0px",
           marginRight: "0px",
+          borderRadius: "0px",
         },
       }}
     >

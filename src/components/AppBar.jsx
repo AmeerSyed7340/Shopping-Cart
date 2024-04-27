@@ -6,11 +6,12 @@ import {
   Stack,
   IconButton,
 } from "@mui/material";
+import Badge from "@mui/material/Badge";
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-const Appbar = ({setIsOpen}) => {
+const Appbar = ({ setIsOpen }) => {
   const location = useLocation();
   console.log(location.pathname);
   const [isHovered, setIsHovered] = useState(false);
@@ -112,9 +113,15 @@ const Appbar = ({setIsOpen}) => {
           </Stack>
           {/* Right side - Cart (conditionally displayed) */}
           {isProductPage && (
-            <IconButton color="inherit" onClick={()=> setIsOpen(true)}>
+            <Badge
+              badgeContent={144}
+              max={999}
+              color="primary"
+              onClick={() => setIsOpen(true)}
+              sx={{ ":hover": { cursor: "pointer" } }}
+            >
               <ShoppingBagOutlinedIcon />
-            </IconButton>
+            </Badge>
           )}
         </Toolbar>
       </AppBar>
