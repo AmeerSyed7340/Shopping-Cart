@@ -20,7 +20,7 @@ const App = () => {
       {/* <VideoComp /> */}
 
       <Outlet isOpen={isOpen}/>
-      {isOpen && <CartComp isOpen={isOpen} />}
+      {isOpen && <CartComp isOpen={isOpen} setIsOpen={setIsOpen} />}
     </ThemeProvider>
   );
 };
