@@ -11,7 +11,7 @@ const theme = createTheme({
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [total, setTotal] = useState(0);
 
   return (
     <ThemeProvider theme={theme}>
@@ -19,8 +19,8 @@ const App = () => {
       <Appbar setIsOpen={setIsOpen}/>
       {/* <VideoComp /> */}
 
-      <Outlet isOpen={isOpen}/>
-      {isOpen && <CartComp isOpen={isOpen} setIsOpen={setIsOpen} />}
+      <Outlet isOpen={isOpen} total={total} setTotal={setTotal}/>
+      {isOpen && <CartComp isOpen={isOpen} setIsOpen={setIsOpen} total={total}/>}
     </ThemeProvider>
   );
 };

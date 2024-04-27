@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import CardComp from "./Card";
+import CardComp from "./CardComp";
 import { Grid } from "@mui/material";
 
-export const Products = () => {
+export const Products = ({total, setTotal}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const Products = () => {
     >
       {products.map((product) => (
         <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
-          <CardComp product={product} />
+          <CardComp product={product} total={total} setTotal={setTotal}/>
         </Grid>
       ))}
     </Grid>
