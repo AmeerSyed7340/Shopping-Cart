@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardActions,
@@ -25,21 +25,25 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+/*----------------------------------------
+       Card component starts here
+----------------------------------------*/
+
 const CardComp = ({ product, total, setTotal }) => {
   const [expanded, setExpanded] = useState(false);
 
   //to add to cart
-  const handleButton = (product, total, setTotal) => {
+  const handleButton = (product) => {
     console.log(product.title);
     product.count++;
+    setTotal((prevTotal) => prevTotal + 1);
     console.log("count", product.count);
-    console.log("total", total);
-    
   };
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
   return (
     <Card>
       <CardHeader
@@ -60,7 +64,7 @@ const CardComp = ({ product, total, setTotal }) => {
           variant="contained"
           color="success"
           sx={{ width: "100%" }}
-          onClick={() => handleButton(product, total, setTotal)}
+          onClick={() => handleButton(product)}
         >
           {/* <Typography variant="h6" sx={{"overflow-wrap": "normal"}}>
                   ADD TO BAG - ${product.price}

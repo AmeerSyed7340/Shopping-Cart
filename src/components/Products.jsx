@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import CardComp from "./CardComp";
 import { Grid } from "@mui/material";
+import { useCart } from "../contexts/CartContext"; //import the useCart hook from the CartContext
 
-export const Products = ({total, setTotal}) => {
+export const Products = () => {
   const [products, setProducts] = useState([]);
+
+  //access context values
+  const { total, setTotal } = useCart();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")

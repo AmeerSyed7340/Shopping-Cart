@@ -11,11 +11,14 @@ import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { useCart } from "../contexts/CartContext";
+
 const Appbar = ({ setIsOpen }) => {
   const location = useLocation();
   console.log(location.pathname);
   const [isHovered, setIsHovered] = useState(false);
 
+  const {total} = useCart();
   const isProductPage = location.pathname === "/products";
 
   return (
@@ -114,7 +117,7 @@ const Appbar = ({ setIsOpen }) => {
           {/* Right side - Cart (conditionally displayed) */}
           {isProductPage && (
             <Badge
-              badgeContent={144}
+              badgeContent={total}
               max={999}
               color="primary"
               onClick={() => setIsOpen(true)}
