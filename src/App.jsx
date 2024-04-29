@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import Appbar from "./components/AppBar";
 import CartComp from "./components/CartComp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { CartProvider } from "./contexts/CartContext";
 const theme = createTheme({
@@ -12,6 +12,10 @@ const theme = createTheme({
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    console.log("isOpen", isOpen);
+  }
+  , [isOpen]);
   return (
     <CartProvider>
       <ThemeProvider theme={theme}>
@@ -21,7 +25,7 @@ const App = () => {
 
         <Outlet />
         {isOpen && (
-          <CartComp isOpen={isOpen} setIsOpen={setIsOpen} total={total} />
+          <CartComp isOpen={isOpen} setIsOpen={setIsOpen} />
         )}
       </ThemeProvider>
     </CartProvider>

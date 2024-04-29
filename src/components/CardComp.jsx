@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardActions,
@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import { useCart } from "../contexts/CartContext";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,6 +31,8 @@ const ExpandMore = styled((props) => {
 
 const CardComp = ({ product, total, setTotal }) => {
   const [expanded, setExpanded] = useState(false);
+
+  //consume the context values
 
   //to add to cart
   const handleButton = (product) => {
@@ -66,9 +68,7 @@ const CardComp = ({ product, total, setTotal }) => {
           sx={{ width: "100%" }}
           onClick={() => handleButton(product)}
         >
-          {/* <Typography variant="h6" sx={{"overflow-wrap": "normal"}}>
-                  ADD TO BAG - ${product.price}
-                </Typography> */}
+          
           ADD TO BAG - ${product.price}
         </Button>
         <ExpandMore
