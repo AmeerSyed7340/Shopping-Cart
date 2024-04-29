@@ -18,17 +18,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+
 
 
 //component starts here
 const CartComp = ({ isOpen, setIsOpen }) => {
+  console.log("cart")
   const [totalPrice, setTotalPrice] = useState(0);
 
   //consume the context values
@@ -62,6 +57,7 @@ const CartComp = ({ isOpen, setIsOpen }) => {
   };
 
   useEffect(() => {
+    console.log("total price is calculated")
     const newTotalPrice = products.reduce(
       (sum, product) => sum + product.price * product.count,
       0

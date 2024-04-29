@@ -31,17 +31,28 @@ const ExpandMore = styled((props) => {
 
 const CardComp = ({ product, total, setTotal }) => {
   const [expanded, setExpanded] = useState(false);
+  const {  setProducts } = useCart();
 
   //consume the context values
 
   //to add to cart
-  const handleButton = (product) => {
-    console.log(product.title);
-    product.count++;
-    setTotal((prevTotal) => prevTotal + 1);
-    console.log("count", product.count);
-  };
+  // const handleButton = (product) => {
+  //   console.log(product.title);
+  //   product.count++;
+  //   setTotal((prevTotal) => prevTotal + 1);
+  //   console.log("count", product.count);
+  // };
 
+  const handleButton = (productId) => {
+    setProducts((currentProducts) =>
+      currentProducts.map((product) =>
+        product.id === productId
+          ? { ...product, count: product.count + 1 }
+          : product
+      )
+    );
+    setTotal((prevTotal) => prevTotal + 1);
+  };
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -66,7 +77,7 @@ const CardComp = ({ product, total, setTotal }) => {
           variant="contained"
           color="success"
           sx={{ width: "100%" }}
-          onClick={() => handleButton(product)}
+          onClick={() => handleButton(product.id)}
         >
           
           ADD TO BAG - ${product.price}

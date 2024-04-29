@@ -24,9 +24,7 @@ const App = () => {
         {/* <VideoComp /> */}
 
         <Outlet />
-        {isOpen && (
           <CartComp isOpen={isOpen} setIsOpen={setIsOpen} />
-        )}
       </ThemeProvider>
     </CartProvider>
   );
