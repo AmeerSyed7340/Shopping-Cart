@@ -3,15 +3,15 @@ import CardComp from "./CardComp";
 import { Grid } from "@mui/material";
 import { useCart } from "../contexts/CartContext"; //import the useCart hook from the CartContext
 
-export const Products = () => {
+export const Products = ({allProd}) => {
   //const [products, setProducts] = useState([]);
-
+console.log(allProd);
 
   //access context values
   const { total, setTotal, products, setProducts } = useCart();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch(allProd)
       .then((res) => res.json())
       .then((json) => {
         const productsWithCount = json.map((product) => ({
@@ -20,7 +20,7 @@ export const Products = () => {
         }));
         setProducts(productsWithCount);
       });
-  }, []);
+  }, [allProd]);
 
   return (
     <Grid

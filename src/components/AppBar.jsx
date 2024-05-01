@@ -18,8 +18,10 @@ const Appbar = ({ setIsOpen }) => {
   console.log(location.pathname);
   const [isHovered, setIsHovered] = useState(false);
 
-  const {total} = useCart();
-  const isProductPage = location.pathname === "/products";
+  const { total } = useCart();
+  const validPaths = ["/products", "/jewelry", "/electronics", "/men", "/women"];
+  const isProductPage = validPaths.includes(location.pathname);
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -80,38 +82,60 @@ const Appbar = ({ setIsOpen }) => {
                 justifyContent: "center",
               }}
             >
-              <Typography
-                variant="h6"
-                sx={{
-                  ":hover": { cursor: "pointer", textDecoration: "underline" },
-                }}
-              >
-                MEN
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  ":hover": { cursor: "pointer", textDecoration: "underline" },
-                }}
-              >
-                WOMEN
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  ":hover": { cursor: "pointer", textDecoration: "underline" },
-                }}
-              >
-                JEWELRY
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  ":hover": { cursor: "pointer", textDecoration: "underline" },
-                }}
-              >
-                ELECTRONICS
-              </Typography>
+              <Link to="/products" style={{ textDecoration: "none", color: "inherit" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ":hover": { cursor: "pointer", textDecoration: "underline" },
+                  }}
+                >
+                  ALL
+                </Typography>
+              </Link>
+
+              <Link to="/men" style={{ textDecoration: "none", color: "inherit" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ":hover": { cursor: "pointer", textDecoration: "underline" },
+                  }}
+                >
+                  MEN
+                </Typography>
+              </Link>
+
+              <Link to="/women" style={{ textDecoration: "none", color: "inherit" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ":hover": { cursor: "pointer", textDecoration: "underline" },
+                  }}
+                >
+                  WOMEN
+                </Typography>
+              </Link>
+
+              <Link to="/jewelry" style={{ textDecoration: "none", color: "inherit" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ":hover": { cursor: "pointer", textDecoration: "underline" },
+                  }}
+                >
+                  JEWELRY
+                </Typography>
+              </Link>
+
+              <Link to="/electronics" style={{ textDecoration: "none", color: "inherit" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ":hover": { cursor: "pointer", textDecoration: "underline" },
+                  }}
+                >
+                  ELECTRONICS
+                </Typography>
+              </Link>
             </Stack>
           </Stack>
           {/* Right side - Cart (conditionally displayed) */}
