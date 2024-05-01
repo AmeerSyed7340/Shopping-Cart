@@ -22,7 +22,6 @@ const Appbar = ({ setIsOpen }) => {
   const validPaths = ["/products", "/jewelry", "/electronics", "/men", "/women"];
   const isProductPage = validPaths.includes(location.pathname);
 
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -50,7 +49,7 @@ const Appbar = ({ setIsOpen }) => {
         >
           {isProductPage && (
             <IconButton>
-              <Link to="/">
+              <Link to="/Shopping-Cart">
                 <HomeOutlinedIcon sx={{ color: "white" }} />
               </Link>
             </IconButton>
