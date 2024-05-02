@@ -10,7 +10,7 @@ const VideoComp = () => {
         style={{ width: "100%", height: "100%", objectFit: "cover"}}
       >
         <source
-          src="/Shopping-Cart/src/assets/videos/3171546-hd_1920_1080_30fps.mp4"
+          src="/Shopping-Cart/videos/3171546-hd_1920_1080_30fps.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
